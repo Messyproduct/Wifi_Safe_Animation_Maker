@@ -1,0 +1,1 @@
+"E:\Documents\Smash Ultimate Modding\tools\Animation Splicer\wifisafe_anim_splicer.exe" --reference_folder "IN_NUANMB" --modified_folder "OUT_NUANMB" --output_folder "OUT_SPLICED"
