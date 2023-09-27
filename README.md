@@ -25,7 +25,7 @@ Most of this has to do with how the game handles animation interpolation and vis
   * Joker’s Curse state
   * Super Spicy Curry
 * Certain Command Grabs
-  *Ridley’s side special
+  * Ridley’s side special
   * Ganondorf’s side special
   * Captain Falcon’s up special
   * etc.
