@@ -149,6 +149,6 @@ I also will be releasing a companion mod to this script which will serve to fix 
 
 Like always if there are any issues please file a report, I will try to fix it but, its not my highest priority since the script works for me. If you have any questions, please wait for my short tutorial coming at some point, if that doesn't answer your question, feel free to reach out me on my socials
 
-Have fun with the scripts! I hope you create cool stuff with these
+Have fun with the scripts! I hope you create cool stuff with these, for example, here is Sonic's run animation retargeted for Mario!
 
 ![mario in blender running with sonic's animations](img/retarget4.gif)
