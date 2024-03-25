@@ -1,4 +1,6 @@
 vis_prefix = w_
-exo_fix = 0
+exo_fix = 1
 reference_animation = ref.nuanmb.json
-exo_anchor_bone = Hip_w
+exo_anchor_bone = Hip
+skip_vis = 0
+use_prefix = 0

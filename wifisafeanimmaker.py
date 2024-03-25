@@ -28,6 +28,8 @@ vis_Prefix=settings_list["vis_prefix"]
 exo_fix=int(settings_list["exo_fix"])
 reference_animation=settings_list["reference_animation"]
 exo_anchor_bone=settings_list["exo_anchor_bone"]
+skip_vis=settings_list["skip_vis"]
+use_prefix=settings_list["use_prefix"]
 
 #Contains all primary function calls
 def main():
@@ -48,6 +50,7 @@ def fileSpooler():
             text_file.close()
             
             trans_data=transMain(data, filename)
+            
             vis_data=visMain(data, filename)
             
             print("(========================================================================Finished Modifying: "+filename)
@@ -158,7 +161,12 @@ def visMain(data, filename):
     file_ref = json.loads(data)
     group_index=0
     groupCount=len(file_data["groups"])
-
+    
+    #print(skip_vis)
+    if(skip_vis == "1"):
+        print("[SKIPPED VIS]: Skip Vis is enabled, using vanilla entries")
+        return file_data
+    
     if(groupCount>1):
         if(file_data["groups"][0]["group_type"]=="Visibility"):
             print("[ANIM TYPE]: " + filename +" contains no motion data but has vis data")
@@ -175,13 +183,16 @@ def visMain(data, filename):
     s_vis=file_data["groups"][group_index]["nodes"].copy()
     w_vis=file_copy["groups"][group_index]["nodes"].copy()
     
-    for mesh in w_vis:
-        print("[VIS ADD] added "+ vis_Prefix + mesh["name"])
-        mesh["name"]=vis_Prefix+mesh["name"]
-    
-    for vanilla_mesh in s_vis:
-        print("[TURN OFF] Vanilla vis mesh: " + str(vanilla_mesh["name"]))
-        vanilla_mesh["tracks"]=[{"name":"Visibility","compensate_scale":False,"transform_flags":{"override_translation":False,"override_rotation":False,"override_scale":False,"override_compensate_scale":False},"values":{"Boolean":[False]}}]
+    if(use_prefix == "1"):
+        for mesh in w_vis:
+            print("[VIS ADD] added "+ vis_Prefix + mesh["name"])
+            mesh["name"]=vis_Prefix+mesh["name"]
+        
+        for vanilla_mesh in s_vis:
+            print("[TURN OFF] Vanilla vis mesh: " + str(vanilla_mesh["name"]))
+            vanilla_mesh["tracks"]=[{"name":"Visibility","compensate_scale":False,"transform_flags":{"override_translation":False,"override_rotation":False,"override_scale":False,"override_compensate_scale":False},"values":{"Boolean":[False]}}]
+    else:
+        print("[SKIPPED PREFIX]: Using Vanilla vis mesh entries")
         
     for added_mesh in added_vis_List:
     
@@ -191,7 +202,11 @@ def visMain(data, filename):
         else:
             w_vis.append({'name': added_mesh, "tracks":[{"name":"Visibility","compensate_scale":False,"transform_flags":{"override_translation":False,"override_rotation":False,"override_scale":False,"override_compensate_scale":False},"values":{"Boolean":[False]}}]})
     
-    combine_vis=s_vis + w_vis
+    if(use_prefix == "1"):
+        combine_vis=s_vis + w_vis
+    else:
+        combine_vis=w_vis
+        
     file_data["groups"][group_index]["nodes"]=combine_vis
     return file_data
     
