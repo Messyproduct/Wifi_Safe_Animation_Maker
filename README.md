@@ -104,6 +104,12 @@ I will create a video tutorial for this later, so no worries if you don’t unde
 What this means is it will be used as the position from where other bone locations are calculated.
 Effectively this will “parent” the bone location similar to how exo bones are parented at the hip.
 
+* skip_vis
+  * If on will skip over changing any of the vis information. It will stay vanilla.
+  
+* use_prefix
+  * If on an added prefix will be added to every vis mesh (useful for wifi safe animation swaps)
+
 #### spliceanimation.bat
 Batch file that must be edited to include the full path to Carlos’s Wi-Fi safe animation splicer. Used as a shortcut to make splicing animations easier after they are retargeted.
 
@@ -112,6 +118,23 @@ Batch file that runs every script one after the other. Will effectively splice a
 
 #### wifisafeanimmaker.py
 Main script that adds the retargeted duplicate entries
+
+#### internalBoneRetargeter.py (EXPERIMENTAL)
+Script derived from the previous one. Will take a reference animation and retarget all animaitons in IN_JSON/ to use the ref skeleton. Retargeted entries will go in OUT_JSON/ after completion, batch_recomp.py can be ran to get the output nuanmb's
+
+## Ref Animation Guide
+To use the ref animation you must first import you smash skeleton and export a nuanmb via smash ultimate blender with everything in a resting state.
+
+![Mario in blender all bones selected insert keyframe for location rotation and scale](img/retarget1.png)
+
+Export with the following settings. Default reference name is ref.nuanmb I reccomend keeping that for simplicity's sake
+
+![Smash ultimate blender export ref.nuanmb with only transforms enabled, start frame 1 end frame 2](img/retarget2.png)
+
+Decompile it via ssbh_data_json.exe. Drag and drop your reference animation onto the exe to make ref.nuanmb.json
+
+![Dragging animation file to ssbh lib json](img/retarget3.png)
+
 
 ## Requirements:
 * [SSBH_data_json]( https://github.com/ultimate-research/ssbh_lib) 
@@ -125,3 +148,7 @@ I don’t foresee many people using these, but I thought I’d publicize them re
 I also will be releasing a companion mod to this script which will serve to fix all the global grabbed animations that have the same interpolation issues when not patched. For this reason. I really recommend keeping the naming Schema invented by SushiiZ and continued by me. 
 
 Like always if there are any issues please file a report, I will try to fix it but, its not my highest priority since the script works for me. If you have any questions, please wait for my short tutorial coming at some point, if that doesn't answer your question, feel free to reach out me on my socials
+
+Have fun with the scripts! I hope you create cool stuff with these
+
+![mario in blender running with sonic's animations](img/retarget4.gif)
