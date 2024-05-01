@@ -122,11 +122,11 @@ Main script that adds the retargeted duplicate entries
 #### internalBoneRetargeter.py (EXPERIMENTAL)
 Script derived from the previous one. Will take a reference animation and retarget all animaitons in IN_JSON/ to use the ref skeleton. Does not use any of the settings besides reference animation. Retargeted entries will go in OUT_JSON/ after completion, batch_recomp.py can be ran to get the output nuanmb's
 
-## Ref Animation Guide
-To use the ref animation you must first import you smash skeleton and export a nuanmb via smash ultimate blender with everything in a resting state.
-
 #### make_folders.bat
 makes the folder structures needed to use the scripts by default
+
+## Ref Animation Guide
+To use the ref animation you must first import you smash skeleton and export a nuanmb via smash ultimate blender with everything in a resting state.
 
 ![Mario in blender all bones selected insert keyframe for location rotation and scale](img/retarget1.png)
 
