@@ -125,6 +125,9 @@ Script derived from the previous one. Will take a reference animation and retarg
 ## Ref Animation Guide
 To use the ref animation you must first import you smash skeleton and export a nuanmb via smash ultimate blender with everything in a resting state.
 
+#### make_folders.bat
+makes the folder structures needed to use the scripts by default
+
 ![Mario in blender all bones selected insert keyframe for location rotation and scale](img/retarget1.png)
 
 Export with the following settings. Default reference name is ref.nuanmb I reccomend keeping that for simplicity's sake
