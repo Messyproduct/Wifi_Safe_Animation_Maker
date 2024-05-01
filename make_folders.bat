@@ -1,0 +1,5 @@
+mkdir IN_JSON
+mkdir IN_NUANMB
+mkdir OUT_JSON
+mkdir OUT_NUANMB
+mkdir OUT_SPLICED
